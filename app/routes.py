@@ -88,10 +88,6 @@ def delete_user(user_id):
 
 
 
-
-
-
-
 @app.route('/orders', methods=['POST'])
 def create_order():
     data = request.json
@@ -126,9 +122,6 @@ def delete_order(order_id):
 
 
 
-
-
-
 @app.route('/offers', methods=['POST'])
 def create_offer():
     data = request.json
@@ -156,7 +149,7 @@ def edit_offer(offer_id):
 
 
 @app.route('/offers/<int:offer_id>', methods=['DELETE'])
-def delete_user(offer_id):
+def delete_offer(offer_id):
     result = db.session.query(models.Offer).filter(models.Offer.id == offer_id).delete()
     db.session.commit()
     return {}

@@ -6,6 +6,10 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 def create_app():
+    """
+    Вызвать основное приложение
+    :return: приложение
+    """
     app = Flask(__name__)
     app.config.from_object('config.Config')
 

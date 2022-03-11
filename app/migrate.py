@@ -6,6 +6,11 @@ from datetime import datetime
 
 
 def load_fixture(file_path):
+    """
+    Загрузить фикстуры
+    :param file_path: путь к файлу
+    :return: фикстура
+    """
 
     content = []
     if os.path.isfile(file_path):
@@ -16,6 +21,13 @@ def load_fixture(file_path):
 
 
 def migration(fixture_path, model, convert_dates=False):
+    """
+    Осуществить миграцию таблиц
+    :param fixture_path: путь к фикстуре
+    :param model: модель
+    :param convert_dates: переформатирование даты. По умолчанию отключено
+    :return: Записывает внесенные изменения
+    """
     fixture_content = load_fixture(fixture_path)
 
     for fixture in fixture_content:
@@ -31,6 +43,11 @@ def migration(fixture_path, model, convert_dates=False):
 
 
 def migrate_user_roles(fixture_path):
+    """
+    Осуществить миграцию ролей юзеров. Вызвать функцию migration
+    :param fixture_path: путь к фикстуре
+    :return: Записывает внесенные изменения
+    """
     migration(
         fixture_path=fixture_path,
         model=models.UserRole,
@@ -38,6 +55,11 @@ def migrate_user_roles(fixture_path):
 
 
 def migrate_users(fixture_path):
+    """
+    Осуществить миграцию юзеров. Вызвать функцию migration
+    :param fixture_path: путь к фикстуре
+    :return: Записывает внесенные изменения
+    """
     migration(
         fixture_path=fixture_path,
         model=models.User,
@@ -46,6 +68,11 @@ def migrate_users(fixture_path):
 
 
 def migrate_orders(fixture_path):
+    """
+    Осуществить миграцию заказов. Вызвать функцию migration
+    :param fixture_path: путь к фикстуре
+    :return: Записывает внесенные изменения
+    """
     migration(
         fixture_path=fixture_path,
         model=models.Order,
@@ -54,6 +81,11 @@ def migrate_orders(fixture_path):
 
 
 def migrate_offers(fixture_path):
+    """
+    Осуществить миграцию офферов. Вызвать функцию migration
+    :param fixture_path: путь к фикстуре
+    :return: Записывает внесенные изменения
+    """
     migration(
         fixture_path=fixture_path,
         model=models.Offer,
